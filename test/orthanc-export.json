@@ -44,29 +44,5 @@
       },
       "postprocess": "node ./bin/agfa_autocrop.js --fuzz 20 --chop 36 --accept 150"
     }
-  ],
-
-  "agfa_autocrop": {
-    "fuzz": "20%",
-    "chop": 36,
-    "accept": 150
-  },
-
-  "unused":     {
-    "desc": "teleos_jpg",
-    "after": "pc_server_jpg",
-    "name": "{{animal.Animal_ID}}+{{client.Surname}}+{{series.datetime.format(\"YYYY-MM-DD HH-mm\"}}+{{series.short_id}}+{{series.description}}.jpg",
-    "path": "/home/xrays/teleos",
-    "postprocess": [
-      {
-        "match_dicom_tags": {
-          "Manufacturer": "Agfa",
-          "Modality": "DX"
-        },
-        "cmd": "./bin/agfa_postprocess"
-      }
-    ]
-
-  }
-
+  ]
 }
