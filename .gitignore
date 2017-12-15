@@ -1,5 +1,6 @@
 test/xrays/*
-
+dcm4che-*/
+tmp/
 
 # Node.js ignores
 # Logs

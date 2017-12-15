@@ -4,7 +4,7 @@
   },
 
   "tmp": "./tmp",
-  "dcm4che": "C:/Temp/dcm/dcm4che-5.11.0",
+  "dcm4che": "dcm4che-5.11.0",
 
   "destinations": [
     {
@@ -23,8 +23,8 @@
       "desc": "pc_us_dicom",
       "type": "dcm2dcm",
       "args": "--jpeg -q 0.9",
-      "topdir": "./test/xrays/by_patient",
-      "dir": "${name[0]}/${name[1]}",
+      "topdir": "./test/xrays",
+      "dir": "by_patient/${name[0]}/${name[1]}",
       "filename": "${moment.format(\"YYYYMMDDTHHmmss\")}_${Modality}_${name[0]}_${name[1]}_${ID.slice(0,8)}.dcm",
       "match": {
         "Modality": "US"
