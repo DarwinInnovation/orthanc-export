@@ -5,14 +5,13 @@
 This script is designed to easily and automatically export, compress and convert files from an Orthanc DICOM Server. This
 could be for auto-import into other tools, back-up or to simplify accessing DICOM files for emailing.
 
-It is designed to communicate with an [Orthanc](https://www.orthanc-server.com/) to detect and download new DICOM instances,
+It is designed to communicate with an [Orthanc server](https://www.orthanc-server.com/) to detect and download new DICOM instances,
 it can then export this to one or more destinations. Key features are:
 
   - Use of the [dcm4che tools](http://www.dcm4che.org/) to convert, compress or process images.
   - Output directory and filename can be templated, using any of the 'simplified tags' of an instance, along with some
     automatically generated helper tags.
-  - Symlinks to an output file can be generated to reduce disk space.
-  - Multiple destinations can be described.
+  - Symlinks to an output file can be generated to allow multiple directory structures with minimal disk space.
   - Destinations can be filtered by providing regular expressions that must match an instance's simplified tags.
   - A post-process step can be defined to automatically run another program on the generated file.
 
@@ -30,7 +29,7 @@ on Windows 10 and Ubuntu Linux 16.04.
 3. [Download latest dcm4che zip file](https://sourceforge.net/projects/dcm4che/files/dcm4che3/) and extract into
    the project directory (so, for example, `dcm4che-5.11.0` is a subdirectory).
 4. Update `test/orthanc-export.js` with:
-      - your Orthanc server settings (these are passed directly to the [orthanc-client]() module).
+      - your Orthanc server settings (these are passed directly to the [orthanc-client](https://github.com/fwoelffel/orthanc-client) module).
       - the dcm4che version you installed (or an absolute path to one)
       - the destinations you want (see below)
 5. (Optional) If you have a big Orthanc database, you may just want to try this on the last few images, if so find the
