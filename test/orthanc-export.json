@@ -3,7 +3,7 @@
     "url": "http://192.168.3.126:8042"
   },
 
-  "tmpdir": "./tmp",
+  "tmp": "./tmp",
   "dcm4che": "C:/Temp/dcm/dcm4che-5.11.0",
 
   "destinations": [
