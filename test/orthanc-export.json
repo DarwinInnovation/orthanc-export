@@ -1,0 +1,72 @@
+{
+  "server": {
+    "url": "http://192.168.3.126:8042"
+  },
+
+  "tmpdir": "./tmp",
+  "dcm4che": "C:/Temp/dcm/dcm4che-5.11.0",
+
+  "destinations": [
+    {
+      "desc": "pc_dx_dicom",
+      "type": "dcm2dcm",
+      "args": "--j2ki -Q 2",
+      "topdir": "./test/xrays",
+      "dir": "by_patient/${name[0]}/${name[1]}",
+      "filename": "${moment.format(\"YYYYMMDDTHHmmss\")}_${Modality}_${name[0]}_${name[1]}_${desc_snake}.dcm",
+      "match": {
+        "Modality": "DX"
+      },
+      "link": "by_date/${moment.year()}/${moment.format(\"MM\")}"
+    },
+    {
+      "desc": "pc_us_dicom",
+      "type": "dcm2dcm",
+      "args": "--jpeg -q 0.9",
+      "topdir": "./test/xrays/by_patient",
+      "dir": "${name[0]}/${name[1]}",
+      "filename": "${moment.format(\"YYYYMMDDTHHmmss\")}_${Modality}_${name[0]}_${name[1]}_${ID.slice(0,8)}.dcm",
+      "match": {
+        "Modality": "US"
+      }
+    },
+    {
+      "desc": "pc_dx_jpg",
+      "type": "dcm2jpg",
+      "args": "--voilut 2",
+      "topdir": "./test/xrays",
+      "dir": "teleos/",
+      "filename": "${PatientID}+${name[0]}+${moment.format(\"YYYY-MM-DD HH-mm\")}+${ID.slice(0,8)}+${desc}.jpg",
+      "match": {
+        "Modality": "DX",
+        "Manufacturer": "Agfa",
+        "PatientID": "^[0-9]+$"
+      },
+      "postprocess": "node ./bin/agfa_autocrop.js --fuzz 20 --chop 36 --accept 150"
+    }
+  ],
+
+  "agfa_autocrop": {
+    "fuzz": "20%",
+    "chop": 36,
+    "accept": 150
+  },
+
+  "unused":     {
+    "desc": "teleos_jpg",
+    "after": "pc_server_jpg",
+    "name": "{{animal.Animal_ID}}+{{client.Surname}}+{{series.datetime.format(\"YYYY-MM-DD HH-mm\"}}+{{series.short_id}}+{{series.description}}.jpg",
+    "path": "/home/xrays/teleos",
+    "postprocess": [
+      {
+        "match_dicom_tags": {
+          "Manufacturer": "Agfa",
+          "Modality": "DX"
+        },
+        "cmd": "./bin/agfa_postprocess"
+      }
+    ]
+
+  }
+
+}

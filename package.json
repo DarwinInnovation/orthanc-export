@@ -1,0 +1,27 @@
+{
+  "name": "orthanc-export",
+  "version": "1.0.0",
+  "description": "Script to automatically convert and export images from Orthanc DICOM server.",
+  "main": "bin/orthanc-export.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "orthanc",
+    "dicom"
+  ],
+  "author": "Richard Miller-Smith",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.0",
+    "commander": "^2.12.2",
+    "debug": "^3.1.0",
+    "fs-extra": "^5.0.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.19.4",
+    "orthanc-client": "^0.10.5",
+    "parse-json": "^4.0.0",
+    "tmp": "0.0.33"
+  }
+}
