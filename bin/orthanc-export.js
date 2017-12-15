@@ -11,6 +11,7 @@ orthanc_export
     .version(package.version)
     .option('-c, --config [file]', 'Path to configuration file')
     .option('-s, --state [file]', 'Path to state saving file')
+    .option('-l, --last [int]', 'Overrde stored last update value.');
     .parse(process.argv);
 
 if (_.isUndefined(orthanc_export.config)) {
@@ -24,6 +25,10 @@ const cfg = parseJson(fs.readFileSync(orthanc_export.config), orthanc_export.con
 
 if (_.isUndefined(cfg.state)) {
   cfg.state = orthanc_export.state;
+}
+
+if (_.has(orthanc_export, 'last')) {
+  cfg.last_update = orthanc_export.last;
 }
 
 var exporter = new orthanc_exporter(cfg);
