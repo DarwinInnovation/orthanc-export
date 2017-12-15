@@ -23,6 +23,9 @@ on Windows 10 and Ubuntu Linux 16.04.
 ### Prerequisites
 
   - node.js > v6
+  - The (undocumented) `agfa_autocroop` script requires the [ImageMagick tools](http://www.imagemagick.org/script/index.php#) to be installed.
+
+### Procedure
 
 1. Clone repository and cd into it.
 2. Run `npm install`.
