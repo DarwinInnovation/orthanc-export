@@ -11,7 +11,7 @@ orthanc_export
     .version(package.version)
     .option('-c, --config [file]', 'Path to configuration file')
     .option('-s, --state [file]', 'Path to state saving file')
-    .option('-l, --last [int]', 'Overrde stored last update value.');
+    .option('-l, --last [int]', 'Overrde stored last update value.')
     .parse(process.argv);
 
 if (_.isUndefined(orthanc_export.config)) {
